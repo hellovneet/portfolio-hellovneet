@@ -104,6 +104,52 @@
   .profile-card .profile-photo,.profile-card .profile-ring{animation:none!important}
 }
 </style>
+
+<style id="hellovneet-v5-ui">
+:root{
+  --accent:#ff8a2a;--accent2:#ffb46f;--bg:#07080b;--surface:#11131a;--text:#f7f7f8;--muted:#a6a9b2;
+}
+.theme-toggle{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:999px;
+  border:1px solid rgba(255,138,42,.28);background:rgba(255,138,42,.07);color:#f4f4f4;
+  cursor:pointer;font:700 11px/1 Inter,system-ui,sans-serif;transition:.25s ease;
+}
+.theme-toggle:hover{background:rgba(255,138,42,.14);transform:translateY(-1px)}
+.skills-marquee{
+  position:relative;overflow:hidden;margin:8px 0 34px;padding:14px 0;
+  border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.skills-track{
+  display:flex;width:max-content;align-items:center;gap:18px;white-space:nowrap;
+  animation:skillsRun 24s linear infinite;
+}
+.skills-track span{
+  font:700 13px/1 Inter,system-ui,sans-serif;color:#dfe1e6;
+  padding:8px 13px;border:1px solid rgba(255,138,42,.18);border-radius:999px;
+  background:rgba(255,138,42,.045);
+}
+.skills-track i{font-style:normal;color:var(--accent);font-size:15px}
+@keyframes skillsRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.skills-marquee:hover .skills-track{animation-play-state:paused}
+body.light-theme{
+  --bg:#f5f6f8;--surface:#ffffff;--text:#15171b;--muted:#5f6672;
+  background:linear-gradient(135deg,#f7f7f8,#eef0f3)!important;color:var(--text)!important;
+}
+body.light-theme .nav{background:rgba(245,246,248,.78)!important;border-bottom-color:rgba(0,0,0,.08)}
+body.light-theme .hero-card,body.light-theme .info-card,body.light-theme .skill-card,body.light-theme .project,body.light-theme .cert-card,body.light-theme .contact-box{
+  background:rgba(255,255,255,.78)!important;border-color:rgba(0,0,0,.09)!important;box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+body.light-theme .nav a,body.light-theme .brand,body.light-theme .project h3,body.light-theme .section h2{color:#15171b}
+body.light-theme .lead,body.light-theme .about p,body.light-theme .project p,body.light-theme small{color:#5f6672}
+@media(max-width:850px){
+  .theme-toggle span{display:none}
+  .theme-toggle{padding:9px 10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .skills-track{animation:none!important}
+}
+</style>
 </head>
 <body>
 
@@ -136,6 +182,7 @@
       <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">☼ <span>Theme</span></button>
     <a class="nav-btn" href="https://github.com/hellovneet" target="_blank" rel="noopener">GitHub ↗</a>
   </header>
 
@@ -151,7 +198,7 @@
         </div>
         <div class="mini-stats">
           <div><strong>IoT</strong><small>Focus</small></div>
-          <div><strong>ESP32</strong><small>Hardware</small></div>
+          <div><strong>ESP32 • Arduino</strong><small>Hardware</small></div>
           <div><strong>AI</strong><small>Learning</small></div>
         </div>
       </div>
@@ -188,6 +235,12 @@
     </section>
 
     <section id="skills" class="section">
+      <div class="skills-marquee" aria-label="Skills">
+        <div class="skills-track">
+          <span>Arduino</span><i>•</i><span>ESP32</span><i>•</i><span>IoT</span><i>•</i><span>Python</span><i>•</i><span>C/C++</span><i>•</i><span>JavaScript</span><i>•</i><span>HTML/CSS</span><i>•</i><span>Git & GitHub</span><i>•</i><span>AI</span><i>•</i>
+          <span>Arduino</span><i>•</i><span>ESP32</span><i>•</i><span>IoT</span><i>•</i><span>Python</span><i>•</i><span>C/C++</span><i>•</i><span>JavaScript</span><i>•</i><span>HTML/CSS</span><i>•</i><span>Git & GitHub</span><i>•</i><span>AI</span><i>•</i>
+        </div>
+      </div>
       <div class="section-head"><span>02</span><h2>Skills & toolkit</h2></div>
       <div class="skills-grid">
         <div class="skill"><b>01</b><h3>IoT & Embedded</h3><p>Arduino UNO, ESP32, sensors, actuators, automation and prototyping.</p><div class="tags"><i>Arduino</i><i>ESP32</i><i>Wokwi</i><i>Tinkercad</i></div></div>
@@ -464,6 +517,27 @@
     requestAnimationFrame(animate);
   }
   requestAnimationFrame(animate);
+})();
+</script>
+
+<script id="hellovneet-theme-engine">
+(() => {
+  const btn=document.getElementById('themeToggle');
+  if(!btn) return;
+  const key='hellovneet-theme';
+  const saved=localStorage.getItem(key);
+  if(saved==='light') document.body.classList.add('light-theme');
+  function sync(){
+    const light=document.body.classList.contains('light-theme');
+    btn.innerHTML=light?'☾ <span>Dark</span>':'☼ <span>Light</span>';
+    btn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme');
+  }
+  sync();
+  btn.addEventListener('click',()=>{
+    document.body.classList.toggle('light-theme');
+    localStorage.setItem(key,document.body.classList.contains('light-theme')?'light':'dark');
+    sync();
+  });
 })();
 </script>
 </body>
