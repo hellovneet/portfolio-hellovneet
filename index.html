@@ -3,138 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vineet Sharma — HellovNeet. IoT student, developer and project builder creating smart systems, AI concepts and useful digital products.">
+  <meta name="description" content="Vineet Sharma — IoT student, developer and project builder.">
   <meta name="theme-color" content="#0b0f19">
-  <title>Vineet Sharma | HellovNeet — IoT • AI • Developer</title>
+  <title>Vineet Sharma | IoT Developer Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
+<style id="hellovneet-orbit-fix">
+.profile-card{position:relative;overflow:visible!important}
+.profile-card>.chip{display:none!important}
+.orbit-layer{
+  position:absolute;inset:0;z-index:20;pointer-events:none;
+  perspective:900px;
+}
+.orbit-track{
+  position:absolute;left:50%;top:50%;
+  width:390px;height:390px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,138,42,.13);
+  border-radius:50%;
+}
+.orbit-track-b{
+  width:320px;height:320px;
+  border-color:rgba(255,255,255,.07);
+  transform:translate(-50%,-50%) rotateX(64deg);
+}
+.orbit-chip{
+  position:absolute;left:50%;top:50%;
+  display:flex;align-items:center;justify-content:center;
+  min-width:54px;height:30px;padding:0 11px;
+  border:1px solid rgba(255,138,42,.35);
+  border-radius:999px;
+  background:rgba(14,15,19,.9);
+  color:#f5f5f5;
+  font:700 11px/1 Inter,system-ui,sans-serif;
+  letter-spacing:.6px;
+  box-shadow:0 0 22px rgba(255,138,42,.13),inset 0 1px rgba(255,255,255,.08);
+  will-change:transform;
+  transform:translate(-50%,-50%);
+}
+.chip-ai{border-color:rgba(255,255,255,.22)}
+.chip-iot{border-color:rgba(255,138,42,.5)}
+.chip-web{border-color:rgba(255,255,255,.18)}
+@media(max-width:900px){
+  .orbit-track{width:310px;height:310px}
+  .orbit-track-b{width:260px;height:260px}
+}
+@media(max-width:600px){
+  .orbit-track{width:265px;height:265px}
+  .orbit-track-b{width:225px;height:225px}
+  .orbit-chip{min-width:48px;height:27px;padding:0 9px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .orbit-layer{display:none}
+  .profile-card>.chip{display:flex!important}
+}
+</style>
 <style>
 .project-visual.webmedic{display:flex;align-items:center;justify-content:center;min-height:160px;font-size:58px;background:radial-gradient(circle at 50% 40%,#17301d,#0d1118 65%);}
-</style>
-
-<style id="hellovneet-v2-theme">
-:root{
-  --v2-bg:#07080b;
-  --v2-panel:rgba(17,18,23,.72);
-  --v2-border:rgba(255,255,255,.09);
-  --v2-orange:#ff8a2a;
-  --v2-orange2:#ffb36b;
-  --v2-text:#f7f7f8;
-  --v2-muted:#a4a7b0;
-}
-html{scroll-behavior:smooth}
-body{
-  background:
-    radial-gradient(900px 500px at 80% -10%,rgba(255,138,42,.11),transparent 60%),
-    radial-gradient(700px 420px at -10% 30%,rgba(255,138,42,.055),transparent 65%),
-    var(--v2-bg);
-  color:var(--v2-text);
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;
-  background-image:linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);
-  background-size:70px 70px;
-}
-.nav{
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  background:rgba(7,8,11,.68)!important;
-  border-bottom:1px solid rgba(255,255,255,.055);
-}
-.brand{transition:transform .25s ease}
-.brand:hover{transform:translateY(-1px)}
-.brand span,.eyebrow,.section-head>span{color:var(--v2-orange)!important}
-.nav a:hover{color:var(--v2-orange)!important}
-.hero h1 span{background:linear-gradient(90deg,var(--v2-orange),var(--v2-orange2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn.primary,.nav-btn{
-  background:linear-gradient(135deg,var(--v2-orange),#ff6f00)!important;
-  box-shadow:0 10px 35px rgba(255,138,42,.18);
-  transition:transform .25s ease,box-shadow .25s ease;
-}
-.btn.primary:hover,.nav-btn:hover{transform:translateY(-2px);box-shadow:0 15px 45px rgba(255,138,42,.27)}
-.btn.ghost{border-color:rgba(255,138,42,.28)!important}
-.hero-card,.info-card,.skill-card,.project,.cert-card,.contact-box{
-  background:linear-gradient(145deg,rgba(20,21,27,.78),rgba(11,12,16,.62))!important;
-  border:1px solid var(--v2-border)!important;
-  box-shadow:0 25px 70px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.025);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-}
-.project{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
-.project:hover{
-  transform:translateY(-7px);
-  border-color:rgba(255,138,42,.28)!important;
-  box-shadow:0 28px 75px rgba(0,0,0,.38),0 0 35px rgba(255,138,42,.06);
-}
-.tags i{
-  border-color:rgba(255,138,42,.2)!important;
-  color:#d7d8dc!important;
-  background:rgba(255,138,42,.055)!important;
-}
-.project-link{color:var(--v2-orange)!important}
-.profile-ring{
-  border-color:rgba(255,138,42,.2)!important;
-  box-shadow:0 0 100px rgba(255,138,42,.1)!important;
-}
-.section{scroll-margin-top:90px}
-.section-head h2{letter-spacing:-1px}
-footer{border-top:1px solid rgba(255,255,255,.06)!important}
-@media(max-width:600px){
-  .hero{padding-top:70px!important}
-  .hero h1{font-size:clamp(42px,12vw,64px)!important}
-}
-@media(prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto!important;transition:none!important}
-}
-</style>
-
-<style id="hellovneet-orbit-v3">
-/* Futuristic orbital chips around the profile photo */
-.profile-card{overflow:visible!important;position:relative}
-.profile-card .chip{
-  position:absolute!important;
-  z-index:8;
-  transform-origin:0 0;
-  will-change:transform;
-  animation:chipFloat 3.2s ease-in-out infinite;
-}
-.profile-card .c1{animation-delay:0s}
-.profile-card .c2{animation-delay:-.8s}
-.profile-card .c3{animation-delay:-1.6s}
-.profile-card .c4{animation-delay:-2.4s}
-.profile-card:after{
-  content:"";
-  position:absolute;
-  width:390px;height:390px;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  border:1px solid rgba(255,138,42,.12);
-  border-radius:50%;
-  pointer-events:none;
-  box-shadow:0 0 55px rgba(255,138,42,.04);
-  animation:orbitRing 14s linear infinite;
-}
-@keyframes chipFloat{
-  0%,100%{filter:brightness(.95);box-shadow:0 0 0 rgba(255,138,42,0)}
-  50%{filter:brightness(1.18);box-shadow:0 0 20px rgba(255,138,42,.16)}
-}
-@keyframes orbitRing{
-  from{transform:translate(-50%,-50%) rotate(0deg)}
-  to{transform:translate(-50%,-50%) rotate(360deg)}
-}
-@media(max-width:900px){
-  .profile-card:after{width:310px;height:310px}
-}
-@media(max-width:600px){
-  .profile-card:after{width:265px;height:265px}
-  .profile-card .chip{font-size:10px!important;padding:5px 8px!important}
-}
-@media(prefers-reduced-motion:reduce){
-  .profile-card:after,.profile-card .chip{animation:none!important}
-}
-</style>
-</head>
+</style></head>
 <body>
 
 <div id="futureIntro">
@@ -186,6 +115,14 @@ footer{border-top:1px solid rgba(255,255,255,.06)!important}
         </div>
       </div>
       <div class="hero-card profile-card">
+        <div class="orbit-layer" aria-hidden="true">
+          <div class="orbit-track orbit-track-a"></div>
+          <div class="orbit-track orbit-track-b"></div>
+          <span class="orbit-chip chip-esp32">ESP32</span>
+          <span class="orbit-chip chip-ai">AI</span>
+          <span class="orbit-chip chip-iot">IoT</span>
+          <span class="orbit-chip chip-web">WEB</span>
+        </div>
         <div class="profile-ring"></div>
         <img class="profile-photo" src="assets/vineet-profile.png" alt="Vineet Sharma">
         <div class="chip c1">ESP32</div><div class="chip c2">AI</div><div class="chip c3">IoT</div><div class="chip c4">WEB</div>
@@ -445,47 +382,47 @@ footer{border-top:1px solid rgba(255,255,255,.06)!important}
 
 </script>
 
-<script id="hellovneet-orbit-motion">
+<script id="hellovneet-orbit-engine">
 (() => {
   const card = document.querySelector('.profile-card');
-  if (!card) return;
-  const chips = [...card.querySelectorAll('.chip')];
-  if (chips.length < 4) return;
+  const layer = card?.querySelector('.orbit-layer');
+  if (!card || !layer) return;
+
+  const chips = [
+    [layer.querySelector('.chip-esp32'), 0, 175, 0.00055],
+    [layer.querySelector('.chip-ai'), Math.PI/2, 155, -0.00048],
+    [layer.querySelector('.chip-iot'), Math.PI, 175, 0.00055],
+    [layer.querySelector('.chip-web'), Math.PI*1.5, 155, -0.00048]
+  ].filter(x => x[0]);
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
 
-  const radii = [175, 145, 175, 145];
-  const speeds = [0.00042, -0.00058, 0.00034, -0.00048];
-  const offsets = [0, Math.PI/2, Math.PI, Math.PI*1.5];
-
   let start = performance.now();
 
-  function frame(now) {
-    const t = now - start;
+  function animate(now) {
     const w = card.clientWidth;
     const h = card.clientHeight;
-    const cx = w / 2;
-    const cy = h / 2;
-    const scale = Math.min(w / 470, h / 470);
-    const baseR = 175 * scale;
+    const cx = w/2;
+    const cy = h/2;
+    const scale = Math.min(w/470, h/470);
+    const t = now-start;
 
-    chips.forEach((chip, i) => {
-      const r = (radii[i] * scale);
-      const a = offsets[i] + t * speeds[i];
-      const x = cx + r * Math.cos(a);
-      const y = cy + r * 0.72 * Math.sin(a);
-      const depth = (Math.sin(a) + 1) / 2;
-      chip.style.left = `${x}px`;
-      chip.style.top = `${y}px`;
-      chip.style.transform = `translate(-50%,-50%) scale(${0.86 + depth * 0.18})`;
-      chip.style.opacity = `${0.72 + depth * 0.28}`;
-      chip.style.zIndex = `${8 + Math.round(depth * 4)}`;
+    chips.forEach(([el, offset, radius, speed]) => {
+      const angle = offset + t*speed;
+      const rx = radius*scale;
+      const ry = radius*0.58*scale;
+      const x = cx + Math.cos(angle)*rx;
+      const y = cy + Math.sin(angle)*ry;
+      const depth = (Math.sin(angle)+1)/2;
+      const size = .82 + depth*.25;
+      el.style.transform = `translate(${x-cx}px,${y-cy}px) translate(-50%,-50%) scale(${size})`;
+      el.style.opacity = String(.58 + depth*.42);
+      el.style.zIndex = String(20 + Math.round(depth*20));
     });
-
-    requestAnimationFrame(frame);
+    requestAnimationFrame(animate);
   }
-  requestAnimationFrame(frame);
+  requestAnimationFrame(animate);
 })();
 </script>
 </body>
