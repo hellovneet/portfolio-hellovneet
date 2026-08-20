@@ -63,7 +63,48 @@
 </style>
 <style>
 .project-visual.webmedic{display:flex;align-items:center;justify-content:center;min-height:160px;font-size:58px;background:radial-gradient(circle at 50% 40%,#17301d,#0d1118 65%);}
-</style></head>
+</style>
+<style id="hellovneet-photo-motion">
+.profile-card .profile-photo{
+  animation:profileFloat 5.5s ease-in-out infinite;
+  transform-origin:50% 58%;
+  will-change:transform,filter;
+}
+.profile-card .profile-ring{
+  animation:ringFloat 5.5s ease-in-out infinite;
+  will-change:transform,box-shadow;
+}
+@keyframes profileFloat{
+  0%,100%{
+    transform:translate3d(0,0,0) rotate(-1deg) scale(1);
+    filter:brightness(1);
+  }
+  25%{
+    transform:translate3d(5px,-7px,0) rotate(1.2deg) scale(1.012);
+    filter:brightness(1.045);
+  }
+  50%{
+    transform:translate3d(0,-11px,0) rotate(0deg) scale(1.018);
+    filter:brightness(1.07);
+  }
+  75%{
+    transform:translate3d(-5px,-6px,0) rotate(-1.2deg) scale(1.012);
+    filter:brightness(1.04);
+  }
+}
+@keyframes ringFloat{
+  0%,100%{transform:translateY(0) scale(1);box-shadow:0 0 90px rgba(255,138,42,.08)}
+  50%{transform:translateY(-8px) scale(1.018);box-shadow:0 0 110px rgba(255,138,42,.14)}
+}
+@media(max-width:600px){
+  .profile-card .profile-photo{animation-duration:6s}
+  .profile-card .profile-ring{animation-duration:6s}
+}
+@media(prefers-reduced-motion:reduce){
+  .profile-card .profile-photo,.profile-card .profile-ring{animation:none!important}
+}
+</style>
+</head>
 <body>
 
 <div id="futureIntro">
