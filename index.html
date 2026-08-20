@@ -246,6 +246,31 @@ body.light-theme .progress{background:#ff8a2a!important}
   body.light-theme .menu{color:#17181b!important}
 }
 </style>
+
+<style id="hellovneet-v7-final">
+.theme-toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,138,42,.35);background:rgba(255,138,42,.08);color:#f7f7f8;border-radius:999px;padding:9px 12px;font:700 11px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:.2s}
+.theme-toggle:hover{transform:translateY(-1px);background:rgba(255,138,42,.15)}
+.skills-marquee{width:100%;overflow:hidden;margin:14px 0 34px;padding:13px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.skills-track{display:flex;width:max-content;align-items:center;gap:16px;animation:skillsV7 24s linear infinite}
+.skills-track span{display:inline-block;padding:8px 13px;border:1px solid rgba(255,138,42,.22);border-radius:999px;background:rgba(255,138,42,.055);font:700 12px/1 Inter,system-ui,sans-serif;color:#e9e9eb}
+.skills-track b{font-weight:500;color:#ff8a2a}
+.skills-marquee:hover .skills-track{animation-play-state:paused}
+@keyframes skillsV7{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+body.light-theme{background:#f4f1eb!important;color:#17181b!important}
+body.light-theme .nav{background:rgba(244,241,235,.92)!important;border-bottom:1px solid rgba(0,0,0,.1)!important}
+body.light-theme .nav a,body.light-theme .brand,body.light-theme .hero h1,body.light-theme .section h2,body.light-theme .section h3,body.light-theme .project h3{color:#17181b!important}
+body.light-theme .lead,body.light-theme .about p,body.light-theme .project p,body.light-theme .section-head,body.light-theme .mini-stats small{color:#5d626b!important}
+body.light-theme .hero-card,body.light-theme .info-card,body.light-theme .skill-card,body.light-theme .project,body.light-theme .cert-card,body.light-theme .contact-box{background:#fffdf9!important;border:1px solid rgba(0,0,0,.11)!important;box-shadow:0 18px 50px rgba(0,0,0,.08)}
+body.light-theme .theme-toggle{color:#17181b;background:rgba(255,138,42,.1);border-color:rgba(200,93,0,.28)}
+body.light-theme .skills-track span{color:#30333a;border-color:rgba(200,93,0,.2);background:rgba(255,138,42,.07)}
+body.light-theme .skills-marquee{border-color:rgba(0,0,0,.09)}
+body.light-theme .skills-track b{color:#c85d00}
+body.light-theme .tags i{color:#30333a!important;background:rgba(255,138,42,.07)!important;border-color:rgba(200,93,0,.2)!important}
+body.light-theme .project-link{color:#b85300!important}
+@media(max-width:850px){.theme-toggle span{display:none}}
+@media(prefers-reduced-motion:reduce){.skills-track{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -653,6 +678,25 @@ body.light-theme .progress{background:#ff8a2a!important}
     mode=document.body.classList.contains('light-theme')?'dark':'light';
     localStorage.setItem(key,mode);
     apply(mode);
+  });
+})();
+</script>
+
+<script id="hellovneet-v7-theme">
+(function(){
+  var btn=document.getElementById("themeToggle");
+  if(!btn)return;
+  var saved=localStorage.getItem("hellovneet-theme")||"dark";
+  function render(mode){
+    document.body.classList.toggle("light-theme",mode==="light");
+    btn.innerHTML=mode==="light"?"☾ <span>Dark</span>":"☀ <span>Light</span>";
+    btn.title=mode==="light"?"Switch to dark theme":"Switch to light theme";
+  }
+  render(saved);
+  btn.addEventListener("click",function(){
+    var next=document.body.classList.contains("light-theme")?"dark":"light";
+    localStorage.setItem("hellovneet-theme",next);
+    render(next);
   });
 })();
 </script>
