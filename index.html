@@ -150,6 +150,102 @@ body.light-theme .lead,body.light-theme .about p,body.light-theme .project p,bod
   .skills-track{animation:none!important}
 }
 </style>
+
+<style id="hellovneet-v6-light">
+body.light-theme{
+  --bg:#f4f1eb;
+  --surface:#fffdf9;
+  --text:#17181b;
+  --muted:#62656d;
+  background:
+    radial-gradient(700px 420px at 85% 0%,rgba(255,138,42,.13),transparent 65%),
+    radial-gradient(600px 380px at -10% 35%,rgba(255,184,112,.10),transparent 65%),
+    #f4f1eb!important;
+  color:#17181b!important;
+}
+body.light-theme:before{opacity:.012;background-image:linear-gradient(rgba(30,30,30,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(30,30,30,.35) 1px,transparent 1px)}
+body.light-theme .nav{
+  background:rgba(244,241,235,.84)!important;
+  border-bottom:1px solid rgba(20,20,20,.09)!important;
+  box-shadow:0 8px 30px rgba(20,20,20,.04);
+}
+body.light-theme .nav a,
+body.light-theme .brand,
+body.light-theme .hero h1,
+body.light-theme .section h2,
+body.light-theme .section h3,
+body.light-theme .project h3,
+body.light-theme .project-body,
+body.light-theme .about-grid strong,
+body.light-theme .info-card strong,
+body.light-theme .skill-card strong,
+body.light-theme .cert-card strong,
+body.light-theme footer{
+  color:#17181b!important;
+}
+body.light-theme .hero .lead,
+body.light-theme .about p,
+body.light-theme .project p,
+body.light-theme .skill-card p,
+body.light-theme .cert-card p,
+body.light-theme .section-head,
+body.light-theme .mini-stats small{
+  color:#5d626b!important;
+}
+body.light-theme .hero-card,
+body.light-theme .info-card,
+body.light-theme .skill-card,
+body.light-theme .project,
+body.light-theme .cert-card,
+body.light-theme .contact-box{
+  background:rgba(255,253,249,.88)!important;
+  border:1px solid rgba(28,30,34,.11)!important;
+  box-shadow:0 18px 50px rgba(28,30,34,.09),inset 0 1px rgba(255,255,255,.8);
+}
+body.light-theme .project:hover{
+  border-color:rgba(255,138,42,.34)!important;
+  box-shadow:0 24px 65px rgba(28,30,34,.12),0 0 28px rgba(255,138,42,.08);
+}
+body.light-theme .btn.ghost{
+  color:#17181b!important;
+  border-color:rgba(28,30,34,.17)!important;
+  background:rgba(255,255,255,.5)!important;
+}
+body.light-theme .btn.ghost:hover{border-color:rgba(255,138,42,.4)!important}
+body.light-theme .tags i,
+body.light-theme .skills-track span{
+  color:#30333a!important;
+  background:rgba(255,138,42,.08)!important;
+  border-color:rgba(255,138,42,.22)!important;
+}
+body.light-theme .theme-toggle{
+  color:#17181b!important;
+  background:rgba(255,138,42,.09)!important;
+  border-color:rgba(255,138,42,.28)!important;
+}
+body.light-theme .nav-btn,
+body.light-theme .btn.primary{
+  color:#fff!important;
+}
+body.light-theme .project-link{color:#c85d00!important}
+body.light-theme .section-head>span,
+body.light-theme .eyebrow{color:#c85d00!important}
+body.light-theme .profile-ring{
+  border-color:rgba(200,93,0,.18)!important;
+  box-shadow:0 0 80px rgba(255,138,42,.10)!important;
+}
+body.light-theme .orbit-track{border-color:rgba(200,93,0,.18)!important}
+body.light-theme .orbit-chip{
+  color:#202126!important;
+  background:rgba(255,253,249,.92)!important;
+  border-color:rgba(200,93,0,.30)!important;
+  box-shadow:0 6px 20px rgba(30,30,30,.10),0 0 15px rgba(255,138,42,.08);
+}
+body.light-theme .progress{background:#ff8a2a!important}
+@media(max-width:850px){
+  body.light-theme .menu{color:#17181b!important}
+}
+</style>
 </head>
 <body>
 
@@ -537,6 +633,26 @@ body.light-theme .lead,body.light-theme .about p,body.light-theme .project p,bod
     document.body.classList.toggle('light-theme');
     localStorage.setItem(key,document.body.classList.contains('light-theme')?'light':'dark');
     sync();
+  });
+})();
+</script>
+
+<script id="hellovneet-v6-theme-engine">
+(() => {
+  const btn=document.getElementById('themeToggle');
+  if(!btn) return;
+  const key='hellovneet-theme';
+  const apply=mode=>{
+    document.body.classList.toggle('light-theme',mode==='light');
+    btn.innerHTML=mode==='light'?'☾ <span>Dark</span>':'☀ <span>Light</span>';
+    btn.setAttribute('aria-label',mode==='light'?'Switch to dark theme':'Switch to light theme');
+  };
+  let mode=localStorage.getItem(key)||'dark';
+  apply(mode);
+  btn.addEventListener('click',()=>{
+    mode=document.body.classList.contains('light-theme')?'dark':'light';
+    localStorage.setItem(key,mode);
+    apply(mode);
   });
 })();
 </script>
